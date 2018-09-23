@@ -2,6 +2,11 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Model = sequelize.define('location', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     country_id: {
       type: DataTypes.INTEGER,
     },

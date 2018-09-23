@@ -2,6 +2,11 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Model = sequelize.define('profile', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     location_id: {
       type: DataTypes.INTEGER,
     },
@@ -44,6 +49,12 @@ module.exports = (sequelize, DataTypes) => {
     org_profile_source: {
       type: DataTypes.STRING,
     },
+    org_profile_year: {
+      type: DataTypes.INTEGER,
+    },
+    org_year_founded: {
+      type: DataTypes.INTEGER,
+    },
     org_url: {
       type: DataTypes.STRING,
     },
@@ -64,25 +75,25 @@ module.exports = (sequelize, DataTypes) => {
 
   Model.associate = (models) => {
     Model.belongsTo(models.location, {
-      foreignKey: 'location_id'
+      foreignKey: 'location_id',
     });
     Model.belongsTo(models.sector, {
-      foreignKey: 'sector_id'
+      foreignKey: 'sector_id',
     });
     Model.belongsTo(models.org_size, {
-      foreignKey: 'org_size_id'
+      foreignKey: 'org_size_id',
     });
     Model.belongsTo(models.org_type, {
-      foreignKey: 'org_type_id'
+      foreignKey: 'org_type_id',
     });
     Model.belongsTo(models.status, {
-      foreignKey: 'status_id'
+      foreignKey: 'status_id',
     });
     Model.belongsTo(models.category, {
-      foreignKey: 'category_id'
+      foreignKey: 'category_id',
     });
     Model.belongsTo(models.country_count, {
-      foreignKey: 'country_count_id'
+      foreignKey: 'country_count_id',
     });
   };
 

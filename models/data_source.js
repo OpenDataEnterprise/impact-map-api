@@ -2,9 +2,13 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Model = sequelize.define('data_source', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     profile_id: {
       type: DataTypes.INTEGER,
-      primaryKey: true 
     },
     country_id: {
       type: DataTypes.INTEGER,
@@ -22,10 +26,18 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'data_source',
     underscored: true,
     timestamps: false,
-    
   });
 
   Model.associate = (models) => {
+    Model.belongsTo(models.profile, {
+      foreignKey: 'profile_id',
+    });
+    Model.belongsTo(models.country, {
+      foreignKey: 'country_id',
+    });
+    Model.belongsTo(models.data_type, {
+      foreignKey: 'data_type_id',
+    });
   };
 
   return Model;

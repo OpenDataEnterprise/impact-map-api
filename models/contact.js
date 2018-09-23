@@ -1,42 +1,39 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  var Model = sequelize.define('country', {
+  var Model = sequelize.define('contact', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    region_id: {
+    profile_id: {
       type: DataTypes.INTEGER,
     },
-    income_level_id: {
-      type: DataTypes.INTEGER,
-    },
-    name: {
+    firstname: {
       type: DataTypes.STRING,
     },
-    alpha2: {
+    lastname: {
       type: DataTypes.STRING,
     },
-    alpha3: {
+    title: {
       type: DataTypes.STRING,
     },
-    latitude: {
-      type: DataTypes.DOUBLE,
+    email: {
+      type: DataTypes.STRING,
     },
-    longitude: {
-      type: DataTypes.DOUBLE,
+    phone: {
+      type: DataTypes.STRING,
     },
   }, {
-    tableName: 'country',
+    tableName: 'contact',
     underscored: true,
     timestamps: false,
   });
 
   Model.associate = (models) => {
-    Model.belongsTo(models.region, {
-      foreignKey: 'region_id',
+    Model.belongsTo(models.profile, {
+      foreignKey: 'profile_id',
     });
   };
 

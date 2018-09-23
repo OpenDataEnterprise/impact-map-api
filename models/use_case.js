@@ -2,6 +2,11 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Model = sequelize.define('use_case', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     profile_id: {
       type: DataTypes.INTEGER,
     },

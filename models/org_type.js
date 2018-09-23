@@ -2,6 +2,11 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Model = sequelize.define('org_type', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     type: {
       type: DataTypes.STRING,
     },
@@ -10,9 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     tableName: 'org_type',
-    
     timestamps: false,
-    
   });
 
   Model.associate = (models) => {
